@@ -84,3 +84,7 @@ C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\obj\Debug\Tarea1.csproj.Co
 C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\obj\Debug\Tarea1.csproj.CopyComplete
 C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\obj\Debug\Tarea1.dll
 C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\obj\Debug\Tarea1.pdb
+C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\bin\EntityFramework.dll
+C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\bin\EntityFramework.SqlServer.dll
+C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\bin\EntityFramework.xml
+C:\Users\laboratorio\source\repos\Tarea1Inacap\Tarea1\bin\EntityFramework.SqlServer.xml
