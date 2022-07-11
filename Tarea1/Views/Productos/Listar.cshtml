@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Tarea1.Models.Producto>
+
+@{
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Tarea1.Models.CategoriaProductos> categorias;
+
+    categorias = ViewBag.Categorias;
+}
+
+<h2>Listar</h2>
+
+<div class="row">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Agregar
+    </button>
+
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+            @foreach (var prod in Model)
+            {
+                <tr>
+                    <td>@prod.Id</td>
+                    <td>@prod.Nombre</td>
+                    <td>@prod.Precio</td>
+                    <td>@prod.Stock</td>
+                    <td>@Html.ActionLink("Eliminar", "Eliminar/" + prod.Id, "Productos")</td>
+                    <td>@Html.ActionLink("Modificar", "MostrarModificar/" + prod.Id, "Productos")</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form method="post" action="@Url.Action("Guardar", "Productos")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="idProducto">ID Producto</label>
+                        <input type="number" name="idProducto" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea name="descripcion" class="form-control"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio</label>
+                        <input type="number" name="precio" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" name="stock" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idCategoria">Categoría</label>
+                        <select class="form-control"  name="idCategoria">
+                            @foreach (Tarea1.Models.CategoriaProductos cat in categorias)
+                            {
+                                <option value="@cat.Id">@cat.Nombre</option>
+                            }
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <input type="submit" class="btn btn-primary" value="Guardar"/>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>

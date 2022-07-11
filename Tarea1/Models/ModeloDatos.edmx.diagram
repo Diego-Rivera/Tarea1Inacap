@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="Tarea1Model.CategoriaProductos" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Tarea1Model.Producto" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="Tarea1Model.FK_Producto_CategoriaProductos1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Tarea1Model.Usuario" Width="1.5" PointX="7.5" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -9,18 +9,14 @@ namespace Tarea1.Controllers
 {
     public class HomeController : Controller
     {
-        private Models.Tarea1Entities1 contextoDatos;
-
-        HomeController()
-        {
-            contextoDatos = new Tarea1Entities1();
-        }
+        private Tarea1.Models.Tarea1Entities1 contextoDatos = new Tarea1Entities1();
+            
 
         public ActionResult Index()
         {
+            //cargamos los productos como una lista y lo pasamos a la vista
             var productos = contextoDatos.Producto.ToList();
-
-
+            
             return View(productos);
         }
 
@@ -38,6 +34,17 @@ namespace Tarea1.Controllers
             return View();
         }
 
+        
+        public ActionResult Detalle(int id)
+        {
+
+            var prod=(from p in contextoDatos.Producto where p.Id==id select p).FirstOrDefault();
+
+            if(prod!=null)
+                return View(prod);
+            else
+                return RedirectToAction("Index");
+        }
        
     }
 }

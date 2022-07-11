@@ -39,5 +39,14 @@
       <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
+    <EntitySet Name="Usuario" EntityType="Tarea1Model.Usuario" />
   </EntityContainer>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" Nullable="false" MaxLength="320" FixedLength="true" Unicode="true" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="pass" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+  </EntityType>
 </Schema>

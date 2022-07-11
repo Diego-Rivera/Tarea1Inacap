@@ -27,5 +27,6 @@ namespace Tarea1.Models
     
         public virtual DbSet<CategoriaProductos> CategoriaProductos { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

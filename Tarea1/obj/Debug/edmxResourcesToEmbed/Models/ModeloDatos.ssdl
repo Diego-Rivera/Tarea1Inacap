@@ -18,6 +18,14 @@
     <Property Name="Stock" Type="int" Nullable="false" />
     <Property Name="IdCategoria" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="nchar" MaxLength="320" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="pass" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Producto_CategoriaProductos1">
     <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
@@ -33,6 +41,7 @@
   <EntityContainer Name="Tarea1ModelStoreContainer">
     <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Producto_CategoriaProductos1" Association="Self.FK_Producto_CategoriaProductos1">
       <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
       <End Role="Producto" EntitySet="Producto" />
