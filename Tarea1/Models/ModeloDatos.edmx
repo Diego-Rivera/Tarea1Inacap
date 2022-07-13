@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Tarea1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Tarea1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoriaProductos">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,14 +14,15 @@
         </EntityType>
         <EntityType Name="Producto">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="Descripcion" Type="nchar" MaxLength="200" Nullable="false" />
-          <Property Name="Precio" Type="int" Nullable="false" />
-          <Property Name="Stock" Type="int" Nullable="false" />
-          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="int" Nullable="false" />
+          <Property Name="stock" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="imagen" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -39,7 +40,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Producto">
-              <PropertyRef Name="IdCategoria" />
+              <PropertyRef Name="idCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -52,7 +53,8 @@
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Tarea1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -66,15 +68,24 @@
         </EntityType>
         <EntityType Name="Producto">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Precio" Type="Int32" Nullable="false" />
-          <Property Name="Stock" Type="Int32" Nullable="false" />
-          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="stock" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK_Producto_CategoriaProductos1" FromRole="Producto" ToRole="CategoriaProductos" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="320" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_Producto_CategoriaProductos1">
           <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
@@ -84,33 +95,25 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Producto">
-              <PropertyRef Name="IdCategoria" />
+              <PropertyRef Name="idCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Tarea1Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Tarea1Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" />
           <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Producto_CategoriaProductos1" Association="Self.FK_Producto_CategoriaProductos1">
             <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <EntitySet Name="Usuario" EntityType="Tarea1Model.Usuario" />
         </EntityContainer>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="email" />
-          </Key>
-          <Property Name="email" Type="String" Nullable="false" MaxLength="320" FixedLength="true" Unicode="true" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="pass" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Tarea1ModelStoreContainer" CdmEntityContainer="Tarea1Entities1">
+        <EntityContainerMapping StorageEntityContainer="Tarea1ModelStoreContainer" CdmEntityContainer="Tarea1Entities2">
           <EntitySetMapping Name="CategoriaProductos">
             <EntityTypeMapping TypeName="Tarea1Model.CategoriaProductos">
               <MappingFragment StoreEntitySet="CategoriaProductos">
@@ -122,21 +125,22 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="Tarea1Model.Producto">
               <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="Tarea1Model.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="pass" ColumnName="pass" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

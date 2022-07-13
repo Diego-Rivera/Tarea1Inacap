@@ -14,12 +14,13 @@ namespace Tarea1.Models
     
     public partial class Producto
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Precio { get; set; }
-        public int Stock { get; set; }
-        public int IdCategoria { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public int precio { get; set; }
+        public int stock { get; set; }
+        public int idCategoria { get; set; }
+        public string descripcion { get; set; }
+        public string imagen { get; set; }
     
         public virtual CategoriaProductos CategoriaProductos { get; set; }
     }

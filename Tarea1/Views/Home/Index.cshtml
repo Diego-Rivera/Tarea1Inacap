@@ -21,15 +21,24 @@
                     <a href="#"></a>
                     <div class="card-body">
                         <h4 class="card-title">
-                            <a href="#">@item.Nombre</a>
+                            <a href="#">@item.nombre</a>
                         </h4>
                         <p class="card-text">
-                            @item.Descripcion
+                            @if (item.imagen != null)
+                            {
+                                <img src="~/Content/img/@item.imagen" width="200"/>
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/default.jpg" width="200"/>
+                            }
                             <br />
-                            Precio: $@item.Precio
+                            @item.descripcion
+                            <br />
+                            Precio: $@item.precio
 
                         </p>
-                        <p>@Html.ActionLink("Ver más", "Detalle/" + item.Id, "Home")</p>
+                        <p>@Html.ActionLink("Ver más", "Detalle/" + item.id, "Home")</p>
                     </div>
                 </div>
             </div>

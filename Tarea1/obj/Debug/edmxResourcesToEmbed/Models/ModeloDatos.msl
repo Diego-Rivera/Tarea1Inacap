@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Tarea1ModelStoreContainer" CdmEntityContainer="Tarea1Entities1">
+  <EntityContainerMapping StorageEntityContainer="Tarea1ModelStoreContainer" CdmEntityContainer="Tarea1Entities2">
     <EntitySetMapping Name="CategoriaProductos">
       <EntityTypeMapping TypeName="Tarea1Model.CategoriaProductos">
         <MappingFragment StoreEntitySet="CategoriaProductos">
@@ -12,21 +12,22 @@
     <EntitySetMapping Name="Producto">
       <EntityTypeMapping TypeName="Tarea1Model.Producto">
         <MappingFragment StoreEntitySet="Producto">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Stock" ColumnName="Stock" />
-          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="Tarea1Model.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
-          <ScalarProperty Name="pass" ColumnName="pass" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

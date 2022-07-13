@@ -13,10 +13,10 @@ namespace Tarea1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Tarea1Entities1 : DbContext
+    public partial class Tarea1Entities2 : DbContext
     {
-        public Tarea1Entities1()
-            : base("name=Tarea1Entities1")
+        public Tarea1Entities2()
+            : base("name=Tarea1Entities2")
         {
         }
     

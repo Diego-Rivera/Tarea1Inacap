@@ -9,14 +9,15 @@
   </EntityType>
   <EntityType Name="Producto">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="200" Nullable="false" />
-    <Property Name="Precio" Type="int" Nullable="false" />
-    <Property Name="Stock" Type="int" Nullable="false" />
-    <Property Name="IdCategoria" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="idCategoria" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="imagen" Type="nchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -34,7 +35,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Producto">
-        <PropertyRef Name="IdCategoria" />
+        <PropertyRef Name="idCategoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

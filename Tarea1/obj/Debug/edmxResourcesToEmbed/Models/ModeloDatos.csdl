@@ -10,15 +10,24 @@
   </EntityType>
   <EntityType Name="Producto">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Precio" Type="Int32" Nullable="false" />
-    <Property Name="Stock" Type="Int32" Nullable="false" />
-    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK_Producto_CategoriaProductos1" FromRole="Producto" ToRole="CategoriaProductos" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="320" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
   </EntityType>
   <Association Name="FK_Producto_CategoriaProductos1">
     <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
@@ -28,25 +37,17 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Producto">
-        <PropertyRef Name="IdCategoria" />
+        <PropertyRef Name="idCategoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Tarea1Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Tarea1Entities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" />
     <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <AssociationSet Name="FK_Producto_CategoriaProductos1" Association="Self.FK_Producto_CategoriaProductos1">
       <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <EntitySet Name="Usuario" EntityType="Tarea1Model.Usuario" />
   </EntityContainer>
-  <EntityType Name="Usuario">
-    <Key>
-      <PropertyRef Name="email" />
-    </Key>
-    <Property Name="email" Type="String" Nullable="false" MaxLength="320" FixedLength="true" Unicode="true" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="pass" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
-  </EntityType>
 </Schema>

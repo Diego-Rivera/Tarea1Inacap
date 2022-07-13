@@ -9,7 +9,7 @@ namespace Tarea1.Controllers
 {
     public class HomeController : Controller
     {
-        private Tarea1.Models.Tarea1Entities1 contextoDatos = new Tarea1Entities1();
+        private Tarea1.Models.Tarea1Entities2 contextoDatos = new Tarea1Entities2();
             
 
         public ActionResult Index()
@@ -38,7 +38,7 @@ namespace Tarea1.Controllers
         public ActionResult Detalle(int id)
         {
 
-            var prod=(from p in contextoDatos.Producto where p.Id==id select p).FirstOrDefault();
+            var prod=(from p in contextoDatos.Producto where p.id==id select p).FirstOrDefault();
 
             if(prod!=null)
                 return View(prod);

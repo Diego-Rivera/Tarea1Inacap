@@ -31,12 +31,12 @@
             @foreach (var prod in Model)
             {
                 <tr>
-                    <td>@prod.Id</td>
-                    <td>@prod.Nombre</td>
-                    <td>@prod.Precio</td>
-                    <td>@prod.Stock</td>
-                    <td>@Html.ActionLink("Eliminar", "Eliminar/" + prod.Id, "Productos")</td>
-                    <td>@Html.ActionLink("Modificar", "MostrarModificar/" + prod.Id, "Productos")</td>
+                    <td>@prod.id</td>
+                    <td>@prod.nombre</td>
+                    <td>@prod.precio</td>
+                    <td>@prod.stock</td>
+                    <td>@Html.ActionLink("Eliminar", "Eliminar/" + prod.id, "Productos")</td>
+                    <td>@Html.ActionLink("Modificar", "MostrarModificar/" + prod.id, "Productos")</td>
                 </tr>
             }
         </table>
@@ -46,7 +46,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post" action="@Url.Action("Guardar", "Productos")">
+        <form method="post" action="@Url.Action("Guardar", "Productos")" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Nuevo producto</h5>
@@ -80,7 +80,7 @@
 
                     <div class="form-group">
                         <label for="idCategoria">Categoría</label>
-                        <select class="form-control"  name="idCategoria">
+                        <select class="form-control" name="idCategoria">
                             @foreach (Tarea1.Models.CategoriaProductos cat in categorias)
                             {
                                 <option value="@cat.Id">@cat.Nombre</option>
@@ -89,7 +89,10 @@
                         </select>
 
                     </div>
-
+                    <div class="form-group">
+                        <label for="imagen">Imagen</label>
+                        <input type="file" name="imagen" class="form-control" />
+                    </div>
 
                 </div>
                 <div class="modal-footer">

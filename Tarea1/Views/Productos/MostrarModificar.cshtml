@@ -18,24 +18,24 @@
 
             <div class="form-group">
                 <label for="idProducto">ID Producto</label>
-                <input type="number" name="idProducto" class="form-control" value="@Model.Id" readonly/>
+                <input type="number" name="idProducto" class="form-control" value="@Model.id" readonly/>
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control" value="@Model.Nombre" />
+                <input type="text" name="nombre" class="form-control" value="@Model.nombre" />
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <textarea name="descripcion" class="form-control">@Model.Descripcion</textarea>
+                <textarea name="descripcion" class="form-control">@Model.descripcion</textarea>
 
             </div>
             <div class="form-group">
                 <label for="precio">Precio</label>
-                <input type="number" name="precio" class="form-control" value="@Model.Precio"/>
+                <input type="number" name="precio" class="form-control" value="@Model.precio"/>
             </div>
             <div class="form-group">
                 <label for="stock">Stock</label>
-                <input type="number" name="stock" class="form-control" value="@Model.Stock"/>
+                <input type="number" name="stock" class="form-control" value="@Model.stock"/>
             </div>
 
             <div class="form-group">
@@ -43,7 +43,7 @@
                 <select class="form-control" name="idCategoria">
                     @foreach (Tarea1.Models.CategoriaProductos cat in categorias)
                     {
-                        if (Model.IdCategoria == cat.Id)
+                        if (Model.idCategoria == cat.Id)
                         {
                             <option value="@cat.Id" selected>@cat.Nombre</option>
                         }
